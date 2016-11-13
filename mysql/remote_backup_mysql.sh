@@ -5,7 +5,7 @@
 ## usage ./remote_backup_mysql.sh
 ## debug option
 ##set -x
-## TO DO                                                                                                                                                                                                           
+## TO DO
 ## introduce cleanup function(e.g. keep last 2 months old db + last 4 weeks db + last 7 days db)
 #### END        HEADER
 #---------------------------------------
@@ -22,9 +22,10 @@ DPRDIR="CHANGE_ME-HOST"
 DHOST="root@HOST"
 
 #### END        BASIC VARIABLES
-#### START      ARGUMENT PARSING
 
+#### START      ARGUMENT PARSING
 #### END	ARGUMENT PARSING
+
 #### START      MAIN 
 
 # scp to backup dir

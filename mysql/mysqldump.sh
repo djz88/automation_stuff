@@ -50,7 +50,6 @@ restore_db ()
 return 0
 }
 
-
 #### END        FUNCTION DECLARATION
 
 # example command

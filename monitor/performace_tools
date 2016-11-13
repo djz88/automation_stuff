@@ -1,0 +1,59 @@
+Performance tools:
+-----------------------------------------------------------
+Virtual Machines:
+xentop                  # CPU, NETWORK, MEMORY info
+
+CPU:
+sar 2 2                 # show cpu stats twice after 2 secs
+
+Memory:
+free -m                 # display memory info ON XENHOST ONLY!!! not system
+
+vmstat                  # virtual memory info
+vmstat -a               # display active/ inactive memory info
+vmstat -f               # display forks since boot
+#add -S m for MEGA e.g. vmstat -S m
+
+Network:
+-----------------------------------------------------------
+iftop -i xapi0          # display througtput of the xen bridge interface
+# add -B for BYTE
+
+ifconfig -a             # show interface info
+
+ip a                    # show interface info
+ip l                    # show interface MAC info
+ip r                    # show routing table
+ip n                    # show "arp table"
+ip m                    # show multicast address
+
+Disk:
+-----------------------------------------------------------
+iostat sda sdb 2 6      # display 6 reports every 2 secs for 2 disks
+iostat -p sda 2 6       # display 6 reports every 2 secs for every partion on disk
+iostat -Nx              # display report with LVM mapping
+# add -x for extend stats e.g. iostat -x
+# add -m for using MEGA
+
+vmstat -d               # show disk stats
+vmstat -p /dev/sda      # shows partition info
+
+Process:
+-----------------------------------------------------------
+pidstat -r      # memory information
+pidstat -d      # disk usage
+pidstat -u      # cpu unilisation
+pidstat -s      # ip stack info
+# add -l for long process name e.g. pidstat -rl
+
+Other:
+-----------------------------------------------------------
+"/var/local/perf_tools" [readonly] 59L, 1650C                                                                                                                                                    1,0-1         Top
+sadf                    # system activity monitor
+who                     # who is logged
+last                    # last logged user
+faillog                 # failed loggins
+
+Complex:
+top                     # processes, cpu, memory
+nmon                    # processes, cpu, memory, disks, network
