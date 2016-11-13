@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+##---------------------------------------
+##### START      HEADER
+## script for automatic mysql databases dump by Zdenek K <n1djz.88@ygg.cz>
+##  intended run via cron.daily
+## usage ./mysql-dump
+## debug option
+##set -x
+## TODO:  dbs taken automatically EXCEPT mentioned
+##### END        HEADER
+##---------------------------------------
+#
+
+#### START	BASIC VARIABLES
+
+MYSQL_DBS="performance_schema mysql"
+MYSQL_LOG_FILE="/var/log/mysql/mysqldump.log"
+
+#### END	BASIC VARIABLES
+
+#### START	MAIN
+
+echo >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+echo "MYSQL-DUMP starts at `date`" >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+for i in $MYSQL_DBS; do  /var/local/scripts/mysqldump.sh -b $i 2>&1 >> $MYSQL_LOG_FILE ;done
+echo "------" >> $MYSQL_LOG_FILE
+echo "MYSQL-DUMP ends at `date`" >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+echo "MYSQL-REMOTE-COPY starts at `date`" >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+/var/local/scripts/remote_backup_mysql.sh >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+echo "MYSQL-REMOTE-COPY ends at `date`" >> $MYSQL_LOG_FILE
+echo "------" >> $MYSQL_LOG_FILE
+echo >> $MYSQL_LOG_FILE
+
+#### END	MAIN
+
+exit 0
