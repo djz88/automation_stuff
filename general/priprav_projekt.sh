@@ -40,7 +40,7 @@ echo
 #### START      MAIN 
 
 # creation of user
-useradd -d /var/www/html/${USERNAME} --no-create-home --user-group --uid $USER_UID --shell /bin/false --inactive 0 --password '$HESLO' --comment "ftp uzivatel ${USERNAME}" ${USERNAME} && echo "heslo: $HESLO"
+useradd -d /var/www/html/${USERNAME} --no-create-home --user-group --uid $USER_UID  -g projektyftp --shell /bin/false --inactive 0 --password '$HESLO' --comment "ftp uzivatel ${USERNAME}" ${USERNAME} && echo "heslo: $HESLO"
 
 # creation of a dir
 mkdir -p /var/www/html/${USERNAME}/http && chmod -R g+s /var/www/html/${USERNAME} && chown -R ${USERNAME}:projektyftp /var/www/html/${USERNAME} && chmod u-w /var/www/html/${USERNAME} && chmod g+w /var/www/html/${USERNAME}/http
@@ -50,5 +50,6 @@ echo -e  "Do manually:\n ----------------"
 echo "ADD user to vsftp allow user file AND reload configuration"
 echo "CP apache site template AND reload configuration"
 echo "Create database and add dbname to the mysql-dump file"
+echo "set rw rights for apache at folders like tmp or upload"
 
 #### END	MAIN 
