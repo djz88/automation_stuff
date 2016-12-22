@@ -5,8 +5,25 @@
 # TODO: occurence pattern from file
 
 import os;
+import sys;
 import re;
 
+f = '/home/_NOT_BACKED_UP/mesto/zastupitelstvo_kraje/txt/Zapis03.txt'
+
+def print_help():
+	'''
+	prints out help, no argument 
+	'''
+	sys.exit("help of " + sys.argv[0] + "\n"
+		"----------------------\n"
+		"usage: " + sys.argv[0] +" argument [parameters]\n"
+		"\n"
+		"argument:\n"
+		"print      prints out line containing regex\n"
+		"\n"
+		"parameters:\n"
+		"--file     files(fullpath) to be examine are in file"
+		"\n")
 
 def getlines(pfile):
     '''
@@ -26,11 +43,28 @@ def getlines(pfile):
             i += 1
     f.close()
 
+def arguments_given(sys_args):
+	'''
+	arguments and parameters handling
+	'''
+	if len(sys_args) < 2:
+		sys.exit(print_help())
 
-def main():
-    getlines('/home/_NOT_BACKED_UP/mesto/zastupitelstvo_kraje/txt/Zapis03.txt')
+	operation = {'print': print_regex}
+	argument_choosed = operation.get(sys_args[1],None)
+	if argument_choosed is None:
+		return  print_help()
+	return argument_choosed
+
+def print_regex():
+    getlines(f)
+
+
+def main(argv):
+    arguments_given(sys.argv)
 
 
 
-if __name__ == '__main__': main()
+
+if __name__ == '__main__': main(sys.argv)
 

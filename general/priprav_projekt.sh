@@ -51,6 +51,7 @@ mkdir -p /var/www/html/${USERNAME}/http && chmod -R g+s /var/www/html/${USERNAME
 #mysql commands:
 #create database $NAME;
 #CREATE USER '$NAME'@'localhost' IDENTIFIED BY 'XXXX';
+#GRANT ALL ON $NAME.* TO '$NAME'@'localhost';
 #FLUSH PRIVILEGES;
 
 
