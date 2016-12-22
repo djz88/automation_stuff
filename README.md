@@ -6,6 +6,7 @@ general dir
 -----------
 Things which do multiple things
 * priprav_projekt.sh - prepare things for an new project
+* grabber.py - grab specific lines from files
 
 monitor
 -------
