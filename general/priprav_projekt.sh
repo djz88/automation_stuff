@@ -47,6 +47,14 @@ usermod -g projektyftp ${USERNAME}|| echo "ERROR: changing primary group to proj
 # creation of a dir
 mkdir -p /var/www/html/${USERNAME}/http && chmod -R g+s /var/www/html/${USERNAME} && chown -R ${USERNAME}:projektyftp /var/www/html/${USERNAME} && chmod u-w /var/www/html/${USERNAME} && chmod g+w /var/www/html/${USERNAME}/http
 
+
+#mysql commands:
+#create database $NAME;
+#CREATE USER '$NAME'@'localhost' IDENTIFIED BY 'XXXX';
+#FLUSH PRIVILEGES;
+
+
+
 # have to do actions
 echo -e  "Do manually:\n ----------------"
 echo "ADD user to vsftp allow user file AND reload configuration"
