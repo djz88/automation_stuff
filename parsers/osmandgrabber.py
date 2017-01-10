@@ -1,13 +1,22 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # script which will download maps for osmand app from osmandwebpage
 # script will download files to the maps dir of current dir
+
+from sys import exit
 from os import getcwd
 from os import path
 from os import makedirs
-from HTMLParser import HTMLParser
-from urllib import urlretrieve
+try:
+    from HTMLParser import HTMLParser
+except:
+    from html.parser import HTMLParser
 
-# create a subclass and override the handler methods
+try:
+    from urllib import urlretrieve
+except:
+    from urllib import request as urlretrieve
+
+# create a class and override the handler methods
 class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         for item in country:
@@ -17,7 +26,7 @@ class MyHTMLParser(HTMLParser):
 
 def DownloadFiles(maps):
     for item in maps:
-        print "downloading map: {}".format(item)
+        print ("downloading map: {}".format(item))
         urlretrieve("{}{}".format(linkbase,item),"maps/{}".format(item))
 
 def CheckDirForMaps():
@@ -29,8 +38,15 @@ def CheckDirForMaps():
 linkbase = "http://download.osmand.net/download.php?standard=yes&file="
 
 # open a file
-f = open ('x.html','r')
-html = f.read()
+try:
+    f = open ('x.html','r')
+    html = f.read()
+    f.close
+except IOError:
+    print('File not found, permission issue or full disk')
+    exit(1)
+#    print('File {} doesn\'t exists.'.format(f))
+
 
 # maps variables
 maplist = []
@@ -41,7 +57,7 @@ parser = MyHTMLParser()
 parser.feed(html)
 
 # download maps
-print "location for maps is: {}/maps".format(getcwd())
+print ("location for maps is: {}/maps".format(getcwd()))
 CheckDirForMaps()
 DownloadFiles(maplist)
 
