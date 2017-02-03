@@ -49,8 +49,9 @@ def DownloadFiles(maps):
         extractedfile = ZipFile.extractall(zipfile,path='maps/')
 
 def CheckDirForMaps():
-    if not path.exists("maps"):
-            makedirs("maps")
+    if not path.exists("./maps"):
+            print("making dir")
+            makedirs("./maps")
 
 #def UnpackMapFiles():
 #    zf = zipfile.ZipFIle("$")
@@ -62,11 +63,13 @@ linkbase = "http://download.osmand.net/download.php?standard=yes&file="
 
 # maps variables
 maplist = []
-country = ['Czech-republic', 'Slovakia']
+country = ['Czech-republic', 'Slovakia', 'France']
 
+# main
+print ("location for maps is: {}/maps".format(getcwd()))
+CheckDirForMaps()
 
 DownloadIndexFile()
-
 # open a file
 try:
     f = open ('maps/index.file','r')
@@ -81,7 +84,5 @@ parser = MyHTMLParser()
 parser.feed(html)
 parser.close()
 # download maps
-print ("location for maps is: {}/maps".format(getcwd()))
-CheckDirForMaps()
 DownloadFiles(maplist)
 
