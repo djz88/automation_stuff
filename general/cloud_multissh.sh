@@ -7,6 +7,9 @@
 ## to get IP addresses
 ## run command with "-ip"
 ##  ssh crowbar "grep ".8[0-9]" /etc/bind/db.virtual.cloud.suse.de"
+## options -ha -ips
+
+
 ####
 set -x
 
@@ -17,7 +20,7 @@ get_ips()
 {
 	local cloud_host=$1
 	local ssh_params="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No"
-	local ssh_command="\"grep \"124.8[0-9]\" /etc/bind/db.virtual.cloud.suse.de\""
+	local ssh_command="\"grep \"d52-54.*124.8[0-9]\" /etc/bind/db.virtual.cloud.suse.de\""
 	local node_ips=$(ssh root@${cloud_host} "ssh ${ssh_params} crowbar ${ssh_command}")
 	if [ $? -ne "0" ]; then echo -e "\nssh failed\n"; exit 1;fi
 	while read -r line; do
@@ -38,18 +41,20 @@ function set_node_names()
 	rip=(["cloud-admin-node"]+="192.168.124.10")
 
 	local ssh_params="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No"
-	local ssh_command="\"grep \"124.8[0-9]\" /etc/bind/db.virtual.cloud.suse.de\""
+	local ssh_check_ha_command="\"grep \"cluster\" /etc/bind/db.virtual.cloud.suse.de\""
+	local ssh_command="\"grep \"d52-54.*124.8[0-9]\" /etc/bind/db.virtual.cloud.suse.de\""
 	local node_ips=$(ssh root@${cloud_host} "ssh ${ssh_params} crowbar ${ssh_command}")
+	local ssh_check_ha=$(ssh root@${cloud_host} "ssh ${ssh_params} crowbar ${ssh_check_ha_command}")
 	if [ $? -ne "0" ]; then echo -e "\nssh failed\n"; exit 1;fi
-	[ "$withha" -eq 1 ] && [ "${#node_ips}" -le 155 ] && echo "CLOUD HAS NO HA - run without -ha" && exit 1
-	[ "$withha" -eq 0 ] && [ "${#node_ips}" -gt 155 ] && echo "CLOUD HAS HA - run with -ha" && exit 1
+	[ "$withha" -eq 1 ] && [ "${#ssh_check_ha}" -eq 0 ] && echo "CLOUD HAS NO HA - run without -ha" && exit 1
+	[ "$withha" -eq 0 ] && [ "${#ssh_check_ha}" -gt 0 ] && echo "CLOUD HAS HA - run with -ha" && exit 1
 
 	while read -r line; do
 		local_nodes=${line%% *}
 		local_ip=${line##* }
 		if (( "$celement" <= "$controlnodes" )); then
-			lports["cloud-controler${celement}-node"]+="1111${celement}"
-			rip["cloud-controler${celement}-node"]+="${local_ip}"
+			lports["cloud-control-node${celement}"]+="1111${celement}"
+			rip["cloud-control-node${celement}"]+="${local_ip}"
 			celement=$((celement + 1))
 #			echo ${lports[*]}
 		elif (( "$element" <= "$computenodes" ));then
@@ -63,6 +68,26 @@ function set_node_names()
 		fi
 	done <<< "$node_ips"
 
+
+#	for (( celement = 1; celement <= ${controlnodes}; celement++ ));do
+#		echo ${!lports[@]}
+#	done
+#
+#	
+#
+#
+#	for (( element = 1; element <= ${computenodes}; element++ ));do
+#
+#		#lports=(${lports} ["cloud-compute${element}-node"]="${nodestartport}")
+#
+##	rip=(["cloud-admin-node"]="10")
+#
+#	for cislo in ${lports_ips[@]}; do
+#		local i=0
+#		local nodes=${!lports[@]}
+#		echo "$node$cislo"
+#		i=$(($i + 1))
+#	done
 }
 
 
@@ -74,6 +99,8 @@ sleep 2
 
 # vars
 declare -A lports
+declare -a lports_ips
+declare -a lports_nodes
 declare -A rip
 withha=0
 tabs=0
@@ -95,7 +122,13 @@ esac
 
 set_node_names cloud-host
 
-
+#echo ${lports[*]}
+#echo
+#echo ${!lports[*]}
+#echo
+#echo ${rip[*]}
+#echo
+#echo ${!rip[*]}
 
 # channels
 for i in ${!lports[@]}; do
@@ -103,7 +136,7 @@ portnumber="${lports[$i]}"
 ipnumber="${rip[$i]}"
 
 # TODO: sed commands need to be cleaned
- delete line
+# delete line
 sed -i "/$i/{n;d}" ~/.ssh/config
 # add line with port
 sed -i "/$i/a'\t'port $portnumber" ~/.ssh/config
