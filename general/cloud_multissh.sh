@@ -21,17 +21,25 @@
 ####
 # set -x
 
+####  change cloud- to cloud2
+####  change port 111 to 121
+####  change screen name ssh na ssh_host2
+####
 
-# function to cleanup screen
+
+# function to cleanup old screens + orphans and initiate  new screen
 function cleanup()
 
 {
-	# clean and initiate screen
-	screen -X -S ssh quit
-	screen -AdmS ssh
+	for i in `screen -ls | awk '$1 ~ /ssh_${cloudhost}/{print $1}'`; do
+		screen -S "$i" -X quit
+		sleep 2
+	done
+	screen -AdmS sshdoener4
 	sleep 2
 }
 
+# function to assign control + compute node variables
 function  set_nodes_variables()
 {
 	[ $withha -eq 1 ]  && controlnodes=2 && nodestartport=13
@@ -57,32 +65,34 @@ function show_usage ()
 		"\e[32muser root\n"\
 		"\e[32mUserKnownHostsFile /dev/null\n"\
 		"\e[32mStrictHostKeyChecking no\e[0m\n\n"\
-		"Usage: Options can be mixed together(-ips prints out ips only and exit)\n\n"\
+		"Basic usage: $0 -doener[0-9] \n\n"\
+		"Mandatory arguments:"\
+		"$0 \e[1m-doener[0-9]\e[0m	sets which cloud-host variable will be used\n\n"\
+		"Optional arguemnts: (can be mixed together (-ips prints out ips only and exit))\n\n"\
+		"$0 \e[1m-set\e[0m	sets cloud-host in ~/.ssh/config and \n\n"\
 		"$0 \e[1m-ips\e[0m		show nodes + ip addresses\n"\
 		"$0 \e[1m-ha\e[0m		counts with multiple controlers\n"\
 		"$0 \e[1m-[0-9]\e[0m	sets number of nodes with admin(can be obtain from -ips option)\n"\
-		"$0 \e[1m-doener[0-9]\e[0m	sets cloud-host in ~/.ssh/config\n\n"\
 		"Default variables:\n"\
 		"without ha, nodenumner 5, controlernodes 1, computenodes 3\n"\
 		"ports for ssh connect on localhost starts at \e[1m11110\e[0m\n\n"\
-		"Example: Set cloud-host and use 5 nodes\n"\
-		"	  \"$0 -5 -doener2\"\n"\
+		"Example: Set cloud-host  in ssh and use 5 nodes\n"\
+		"	  \"$0 -doener2 -set -5 \"\n"\
 		"Example: Use ha and 7 nodes\n"\
-		"	  \"$0 -ha -7\"\n"
+		"	  \"$0 -doener2 -ha -7\"\n"
 }
 
-# function set cloud-host to desired one
+# function set cloud-host to desired one in ~/.ssh/config
 function set_cloud_host ()
-
 {
-#	[ -z $cloudhost ] && echo "no cloud host provided";exit 1
+	[ -z $cloudhost ] && echo "no cloud host provided";exit 1
 # this can be used when multiple clouds can be run
 #	sed -i "/cloud$clhostnumber-host/{n;d}" ~/.ssh/config
 	sed -i "/Host cloud-host/{n;d;}" ~/.ssh/config
 	# add line with port
 # this can be used when multiple clouds can be run
-#	sed -i "/cloud${clhostnumber}-host/a'\t'hostname $cloudhost" ~/.ssh/config
-	sed -i "/Host cloud-host/a'\t'hostname $cloudhost" ~/.ssh/config
+#	sed -i "/cloud${clhostnumber}-host/a'\t'hostname ${cloudhost}.${cloudhostdomain}" ~/.ssh/config
+	sed -i "/Host cloud-host/a'\t'hostname ${cloudhost}.${cloudhostdomain}" ~/.ssh/config
 	# cleanup '
 	sed -i "s/'//" ~/.ssh/config
 	sed -i "s/'//" ~/.ssh/config
@@ -157,6 +167,7 @@ withha=${withha:=0}
 tabs=0
 controlnodes=${controlnodes:=1}
 nodestartport=${nodestartport:=12}
+cloudhostdomain=""
 
 
 # argument handling
@@ -164,6 +175,11 @@ for a in $@; do
 arg=$a
 case "$arg" in
 	"")
+		;;
+	-doener[0-9])
+		cloudhost=${arg##-}
+		mand_arg_set=1
+		shift
 		;;
 	-ips)
 		get_ips cloud-host
@@ -179,10 +195,8 @@ case "$arg" in
 		[ $nodes -le 4 ] && exit 1
 		shift
 		;;
-	-doener[0-9])
-		cloudhost=${arg##-}
+	-set)
 		set_cloud_host
-		shift
 		;;
 	*)
 		show_usage
@@ -190,6 +204,7 @@ case "$arg" in
 		;;
 esac
 done
+[ -z $mand_arg_set ]  && echo "cloud host not set, please use -doenerX parameter";exit 1
 
 # main
 cleanup
@@ -225,7 +240,7 @@ done
 for i in ${!lports[@]}; do
 	portnumber="${lports[$i]}"
 	ipnumber="${rip[$i]}"
-	screen -S ssh -X screen -t tab$tabs ssh -Nn cloud-host -l root -L $portnumber:$ipnumber:22
+	screen -S ssh_$cloudhost -X screen -t tab$tabs ssh -Nn cloud-host -l root -L $portnumber:$ipnumber:22
 
 	# increase tab
 	tabs=$((tabs+1))

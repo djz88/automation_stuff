@@ -97,8 +97,10 @@ linkbase = "http://download.osmand.net/download.php?standard=yes&file="
 maplist = []
 #country = ['Czech-republic', 'Slovakia', 'France', 'Germany', 'Us_virginia',
 #           'Us_washington']
+#country = ['Gb', 'Austria', 'Netherlands', 'Poland']
 
-country = ['Gb', 'Austria', 'Netherlands', 'Poland']
+country = ['Czech-republic', 'Us_virginia', 'Us_washington',
+           'France_occitania', 'Germany_bayern', 'Germany_hessen']
 # main
 print ("Countries which will be downloaded: {}".format(country))
 print ("location for maps is: {}/maps".format(getcwd()))
