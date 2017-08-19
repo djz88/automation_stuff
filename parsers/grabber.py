@@ -1,70 +1,65 @@
 #!/usr/bin/python3
-# TODO: multiple files input
+# TODO: better multiple files handling
 # TODO: searched text via input
 # TODO: create function which count occurence of a pattern
 # TODO: occurence pattern from file
 
-import os;
-import sys;
-import re;
+from __future__ import print_function
+import os
+import sys
+import re
+import argparse
 
 f = '/home/_NOT_BACKED_UP/mesto/zastupitelstvo_kraje/txt/Zapis03.txt'
 
-def print_help():
-	'''
-	prints out help, no argument 
-	'''
-	sys.exit("help of " + sys.argv[0] + "\n"
-		"----------------------\n"
-		"usage: " + sys.argv[0] +" argument [parameters]\n"
-		"\n"
-		"argument:\n"
-		"print      prints out line containing regex\n"
-		"\n"
-		"parameters:\n"
-		"--file     files(fullpath) to be examine are in file"
-		"\n")
+class TextManupulation:
+    def __init__(self):
+        self.getlines(f)
 
-def getlines(pfile):
-    '''
-    Get lines from file
-    '''
-    i = 0
-    with open(pfile,'r') as f:
-        data = f.read()
-        rozprava = re.findall('(V rozpravě vystoup.*| Dále vystoup.*)(\.|\s.*\.)',data)
-        llength = len(rozprava)
-        regexp = re.compile(r"^\(\'|\', '|\'\)$|\\n")
-        while i < llength:
-            string = str(rozprava[i])
-            string = regexp.sub("",string)
-            print (string)
-            string = ""
-            i += 1
-    f.close()
+    def getlines(self, pfile):
+        '''
+        Get wanted lines from the file
+        '''
+        print('\n\n=====\nActual file: {}'.format(pfile))
+        with open(pfile,'r') as ofile:
+            data = ofile.read()
+            #search_regexp_pattern = '(V rozprav vystoup.*| le vystoup.*)(\.|\s.*\.)'
+            vytah = re.findall('(V rozpravě vystoup.*| Dále vystoup.*)(\.|\s.*\.)', data)
+            llength = len(vytah)
+            i = 0
+            print('{} records found\n=====\n'.format(llength))
+            regexp = re.compile(r"^\(\'|\', '|\'\)$|\\n")
+            while i < llength:
+                string = str(vytah[i])
+                string = regexp.sub('',string)
+                print (string)
+                string = ''
+                i += 1
+        ofile.close()
 
-def arguments_given(sys_args):
-	'''
-	arguments and parameters handling
-	'''
-	if len(sys_args) < 2:
-		sys.exit(print_help())
-
-	operation = {'print': print_regex}
-	argument_choosed = operation.get(sys_args[1],None)
-	if argument_choosed is None:
-		return  print_help()
-	return argument_choosed
-
-def print_regex():
-    getlines(f)
+def Arguments():
+        '''
+        Handle arguments given from the cli
+        '''
+        parser = argparse.ArgumentParser()
+        parser.add_argument('print', action='store', default=False,
+                            help='print-out text')
+        parser.add_argument('-f', '--file', nargs='+',
+                           help='File to be parsed')
+        _args = parser.parse_args()
+        return( _args.print,  _args.file)
 
 
-def main(argv):
-    arguments_given(sys.argv)
-
-
-
-
-if __name__ == '__main__': main(sys.argv)
-
+if __name__ == '__main__':
+    # handle arguments
+    Arguments()
+    action_print, argument_file = Arguments()
+    if argument_file:
+        f = argument_file
+    if action_print:
+        if len(argument_file) > 1:
+            for files in argument_file:
+                f = files
+                TextManupulation()
+        else:
+            TextManupulation()
