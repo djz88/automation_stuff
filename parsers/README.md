@@ -9,3 +9,7 @@ Script will create folder maps in directory where the script is executed and dow
 
 ####Usage
 edit variable **country** to match uour desired maps
+
+## parse_yaml.py
+
+Script which parse from yaml file
