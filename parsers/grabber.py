@@ -45,7 +45,7 @@ def Arguments():
         parser.add_argument('print', action='store', default=False,
                             help='print-out text')
         parser.add_argument('-f', '--file', nargs='+',
-                           help='File to be parsed')
+                           help='File to be parsed. Can be glob like *')
         _args = parser.parse_args()
         return( _args.print,  _args.file)
 
