@@ -13,3 +13,7 @@ edit variable **country** to match uour desired maps
 ## parse_yaml.py
 
 Script which parse from yaml file
+
+## conection_count.py
+
+Script which print out uniq IP connection from a file (output of `ss -ltp`)
