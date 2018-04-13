@@ -66,6 +66,7 @@ case $1 in
 			"LVM: $0 create|remove|merge\n"\
 			"virsh: $0 start|stop|destroy"
 		exit 1
+	;;
 esac
 	
 
