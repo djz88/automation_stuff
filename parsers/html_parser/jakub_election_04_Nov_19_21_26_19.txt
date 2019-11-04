@@ -5,28 +5,28 @@ Percent voted: 83%
 
 --- KS Praha ---
 Members: 242
-Voters: 211
-Percent voted: 87%
+Voters: 214
+Percent voted: 88%
 
 --- KS Moravskoslezsky kraj ---
 Members: 67
-Voters: 54
-Percent voted: 81%
+Voters: 56
+Percent voted: 84%
 
 --- KS Pardubicky kraj ---
 Members: 45
-Voters: 34
-Percent voted: 76%
+Voters: 35
+Percent voted: 78%
 
 --- KS Jihomoravsky kraj ---
 Members: 69
-Voters: 46
-Percent voted: 67%
+Voters: 48
+Percent voted: 70%
 
 --- KS Vysocina ---
 Members: 51
-Voters: 34
-Percent voted: 67%
+Voters: 35
+Percent voted: 69%
 
 --- KS Olomoucky kraj ---
 Members: 76
@@ -40,35 +40,35 @@ Percent voted: 76%
 
 --- KS Zlinsky kraj ---
 Members: 68
-Voters: 46
-Percent voted: 68%
+Voters: 47
+Percent voted: 69%
 
 --- KS Jihocesky kraj ---
 Members: 68
-Voters: 51
-Percent voted: 75%
+Voters: 52
+Percent voted: 76%
 
 --- KS Liberecky kraj ---
 Members: 50
-Voters: 31
-Percent voted: 62%
+Voters: 32
+Percent voted: 64%
 
 --- KS Karlovarsky kraj ---
 Members: 52
-Voters: 27
-Percent voted: 52%
+Voters: 28
+Percent voted: 54%
 
 --- KS Plzensky kraj ---
 Members: 60
-Voters: 40
-Percent voted: 67%
+Voters: 41
+Percent voted: 68%
 
 --- KS Stredocesky kraj ---
 Members: 68
-Voters: 55
-Percent voted: 81%
+Voters: 57
+Percent voted: 84%
 
 ----- Global numbers
 Eligible voters: 1009
-All voters: 754
-Nonvoters: 255
+All voters: 770
+Nonvoters: 239
