@@ -1,0 +1,374 @@
+--- MS Jindrichuv Hradec ---
+Members: 31
+Voters: 0
+Percent voted: 0%
+
+--- MS Praha 12 ---
+Members: 6
+Voters: 5
+Percent voted: 83%
+
+--- MS Plzen ---
+Members: 26
+Voters: 21
+Percent voted: 81%
+
+--- MS Karvinsko ---
+Members: 20
+Voters: 15
+Percent voted: 75%
+
+--- MS Brno ---
+Members: 25
+Voters: 21
+Percent voted: 84%
+
+--- MS Opavske Slezsko ---
+Members: 9
+Voters: 8
+Percent voted: 89%
+
+--- MS Chotebor ---
+Members: 5
+Voters: 2
+Percent voted: 40%
+
+--- MS Zlin ---
+Members: 20
+Voters: 12
+Percent voted: 60%
+
+--- MS Sumpersko ---
+Members: 7
+Voters: 4
+Percent voted: 57%
+
+--- MS Valec ---
+Members: 6
+Voters: 2
+Percent voted: 33%
+
+--- MS Olomouc ---
+Members: 27
+Voters: 21
+Percent voted: 78%
+
+--- MS Pribram ---
+Members: 8
+Voters: 5
+Percent voted: 62%
+
+--- MS Znojemsko ---
+Members: 6
+Voters: 4
+Percent voted: 67%
+
+--- MS Brandys nad Labem - Stara Boleslav ---
+Members: 4
+Voters: 4
+Percent voted: 100%
+
+--- MS Havlickuv Brod ---
+Members: 9
+Voters: 6
+Percent voted: 67%
+
+--- MS Marianské Lazne ---
+Members: 11
+Voters: 6
+Percent voted: 55%
+
+--- MS Zatec - Louny ---
+Members: 5
+Voters: 2
+Percent voted: 40%
+
+--- MS As ---
+Members: 2
+Voters: 1
+Percent voted: 50%
+
+--- MS Decin ---
+Members: 5
+Voters: 4
+Percent voted: 80%
+
+--- MS Pisecko ---
+Members: 15
+Voters: 9
+Percent voted: 60%
+
+--- MS Piratska tvrz ---
+Members: 7
+Voters: 4
+Percent voted: 57%
+
+--- MS ValMez ---
+Members: 12
+Voters: 9
+Percent voted: 75%
+
+--- MS Tachovsko ---
+Members: 8
+Voters: 4
+Percent voted: 50%
+
+--- MS Prostejov ---
+Members: 10
+Voters: 7
+Percent voted: 70%
+
+--- MS Prerov ---
+Members: 12
+Voters: 10
+Percent voted: 83%
+
+--- MS Kladno ---
+Members: 6
+Voters: 4
+Percent voted: 67%
+
+--- MS Vsetin ---
+Members: 6
+Voters: 3
+Percent voted: 50%
+
+--- MS Slovacko ---
+Members: 15
+Voters: 10
+Percent voted: 67%
+
+--- MS Praha 10 ---
+Members: 22
+Voters: 18
+Percent voted: 82%
+
+--- MS Blanensko ---
+Members: 7
+Voters: 5
+Percent voted: 71%
+
+--- MS Mlada Boleslav ---
+Members: 4
+Voters: 4
+Percent voted: 100%
+
+--- MS Praha 6 ---
+Members: 27
+Voters: 25
+Percent voted: 93%
+
+--- MS Teplice ---
+Members: 31
+Voters: 0
+Percent voted: 0%
+
+--- MS Ceskobudejovicko ---
+Members: 18
+Voters: 14
+Percent voted: 78%
+
+--- MS Karlovy Vary ---
+Members: 11
+Voters: 6
+Percent voted: 55%
+
+--- MS Strakonicko ---
+Members: 6
+Voters: 4
+Percent voted: 67%
+
+--- MS Praha 13 ---
+Members: 12
+Voters: 11
+Percent voted: 92%
+
+--- MS Sokolovsko ---
+Members: 6
+Voters: 4
+Percent voted: 67%
+
+--- MS Telcsko ---
+Members: 4
+Voters: 3
+Percent voted: 75%
+
+--- MS Kromeriz ---
+Members: 20
+Voters: 14
+Percent voted: 70%
+
+--- MS Uherske Hradiste ---
+Members: 7
+Voters: 6
+Percent voted: 86%
+
+--- MS Svitavsko ---
+Members: 6
+Voters: 4
+Percent voted: 67%
+
+--- MS Trebicsko ---
+Members: 15
+Voters: 11
+Percent voted: 73%
+
+--- MS Ostrava ---
+Members: 25
+Voters: 23
+Percent voted: 92%
+
+--- MS Praha 5 ---
+Members: 8
+Voters: 7
+Percent voted: 88%
+
+--- MS Litomericko ---
+Members: 10
+Voters: 10
+Percent voted: 100%
+
+--- MS Loket ---
+Members: 3
+Voters: 1
+Percent voted: 33%
+
+--- MS Chebsko ---
+Members: 7
+Voters: 6
+Percent voted: 86%
+
+--- MS Praha 9 ---
+Members: 10
+Voters: 9
+Percent voted: 90%
+
+--- MS Tabor ---
+Members: 8
+Voters: 7
+Percent voted: 88%
+
+--- MS Jablonec nad Nisou ---
+Members: 11
+Voters: 9
+Percent voted: 82%
+
+--- MS Hranicko ---
+Members: 7
+Voters: 5
+Percent voted: 71%
+
+--- MS Kutna Hora ---
+Members: 5
+Voters: 5
+Percent voted: 100%
+
+--- MS Benesov ---
+Members: 8
+Voters: 8
+Percent voted: 100%
+
+--- MS Jihlavsko ---
+Members: 5
+Voters: 4
+Percent voted: 80%
+
+--- MS Ceskotrebovsko ---
+Members: 11
+Voters: 8
+Percent voted: 73%
+
+--- MS Hradec Kralove ---
+Members: 14
+Voters: 12
+Percent voted: 86%
+
+--- MS Pardubicko ---
+Members: 13
+Voters: 10
+Percent voted: 77%
+
+--- MS Chrudimsko ---
+Members: 13
+Voters: 11
+Percent voted: 85%
+
+--- MS Podorlicko ---
+Members: 4
+Voters: 4
+Percent voted: 100%
+
+--- MS Praha 8 ---
+Members: 18
+Voters: 16
+Percent voted: 89%
+
+--- MS Praha 11 ---
+Members: 13
+Voters: 11
+Percent voted: 85%
+
+--- MS Praha 1 ---
+Members: 10
+Voters: 10
+Percent voted: 100%
+
+--- MS Usti nad Labem ---
+Members: 10
+Voters: 7
+Percent voted: 70%
+
+--- MS Praha 4 ---
+Members: 22
+Voters: 21
+Percent voted: 95%
+
+--- MS Most ---
+Members: 12
+Voters: 8
+Percent voted: 67%
+
+--- MS Kolin ---
+Members: 6
+Voters: 6
+Percent voted: 100%
+
+--- MS Rotava ---
+Members: 6
+Voters: 2
+Percent voted: 33%
+
+--- MS Praha 3 ---
+Members: 24
+Voters: 23
+Percent voted: 96%
+
+--- MS Praha 2 ---
+Members: 14
+Voters: 13
+Percent voted: 93%
+
+--- MS Nymburk ---
+Members: 5
+Voters: 4
+Percent voted: 80%
+
+--- MS Trutnovsko ---
+Members: 10
+Voters: 9
+Percent voted: 90%
+
+--- MS Kadan ---
+Members: 6
+Voters: 6
+Percent voted: 100%
+
+--- MS Jesenice - Jilove ---
+Members: 3
+Voters: 3
+Percent voted: 100%
+
+----- Global numbers
+Eligible voters: 1009
+All voters: 771
+Nonvoters: 238
