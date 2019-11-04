@@ -104,6 +104,6 @@ if __name__ == '__main__':
     # global numbers
     print('----- Global numbers\nEligible voters:', len(voters) + len(non_voters))
     print('All voters:',len(voters))
-    print('Nonvoters', len(non_voters))
+    print('Nonvoters:', len(non_voters))
 # -------------------------
 
