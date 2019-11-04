@@ -27,7 +27,9 @@ krajska_sdruzeni = {"KS Kralovehradecky kraj": "deadbeef-babe-f002-000000000032"
         "KS Jihocesky kraj" : "deadbeef-babe-f002-000000000040",
         "KS Liberecky kraj" : "deadbeef-babe-f002-000000000041",
         "KS Karlovarsky kraj": "deadbeef-babe-f002-000000000043",
-        "KS Plzensky kraj" : "deadbeef-babe-f002-000000000044",}
+        "KS Plzensky kraj" : "deadbeef-babe-f002-000000000044",
+        "KS Stredocesky kraj": "deadbeef-babe-f002-000000000078"}
+
 members_ks = krajska_sdruzeni
 voters_ks = {}
 graph_url = "https://graph.pirati.cz/"
