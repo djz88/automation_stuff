@@ -46,7 +46,7 @@ Percent voted: 68%
 --- KS Jihocesky kraj ---
 Members: 68
 Voters: 51
-
+Percent voted: 75%
 
 --- KS Liberecky kraj ---
 Members: 50
