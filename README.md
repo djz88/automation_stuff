@@ -8,6 +8,7 @@ Things which do multiple things
 * cloud_multissh.sh - script to get IP from the cloud admin
                       node or connect to all nodes
 * priprav_projekt.sh - prepare things for an new project
+* sendmailfc.py - sending emails
 
 monitor dir
 -----------
